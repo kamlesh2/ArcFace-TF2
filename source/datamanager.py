@@ -5,13 +5,15 @@ from sklearn.utils import shuffle
 
 class Dataset(object):
 
-    def __init__(self, normalize=True):
+    def __init__(self, dtst=-1, normalize=True):
 
         print("\nInitializing Dataset...")
 
         self.normalize = normalize
-
-        (x_tr, y_tr), (x_te, y_te) = tf.keras.datasets.mnist.load_data()
+        if dtst == -1:
+            (x_tr, y_tr), (x_te, y_te) = tf.keras.datasets.mnist.load_data()
+        else:
+            (x_tr, y_tr), (x_te, y_te) = dtst
         self.x_tr, self.y_tr = x_tr, y_tr
         self.x_te, self.y_te = x_te, y_te
 
